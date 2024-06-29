@@ -1,4 +1,4 @@
-from django.template import Template, Context
+from django.template import Template, Context, loader
 from django.http import HttpResponse
 
 def saludar (request,nombre,apellido):
@@ -8,9 +8,13 @@ def saludar (request,nombre,apellido):
 
 def plant (request):
 
-    with open('C:/Users/aranias/Desktop/Python_git/git_test/MyProject/MyProject/plantillas/bienvenida.html') as file:
-        templateej = Template(file.read())
-        contextej = Context()
-        vista = templateej.render(contextej)
+    
+        #templateej = Template(file.read())
+        #contextej = Context()
+        #vista = templateej.render(contextej)
 
-    return HttpResponse(vista)
+        patito = 'Cuak'
+        plantilla = loader.get_template('bienvenida.html')
+        renderr = plantilla.render(patito)
+
+        return HttpResponse(renderr)
