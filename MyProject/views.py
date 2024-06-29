@@ -2,10 +2,10 @@ from django.template import Template, Context, loader
 from django.http import HttpResponse
 from Applic.models import *
 
+
 def saludar (request,nombre,apellido):
     saludo = f'Hola {nombre} {apellido}'
     return HttpResponse(saludo)
-
 
 def plant (request):
 
@@ -19,3 +19,4 @@ def plant (request):
         renderr = plantilla.render(patito)
 
         return HttpResponse(renderr)
+
