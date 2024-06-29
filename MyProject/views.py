@@ -1,5 +1,6 @@
 from django.template import Template, Context, loader
 from django.http import HttpResponse
+from Applic.models import *
 
 def saludar (request,nombre,apellido):
     saludo = f'Hola {nombre} {apellido}'
