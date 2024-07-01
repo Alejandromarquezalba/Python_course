@@ -5,7 +5,8 @@ from Applic.views import *
 urlpatterns = [
     path('', Home, name='home'),
     path('acerca/', Acerca, name='acerca'),
-    path('contacto/', Contacto, name='contacto')
+    path('contacto/', Contacto, name='contacto'),
 
+    path('form/', Form, name='form')
 ]
 
