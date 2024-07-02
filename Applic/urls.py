@@ -7,6 +7,10 @@ urlpatterns = [
     path('acerca/', Acerca, name='acerca'),
     path('contacto/', Contacto, name='contacto'),
 
-    path('form/', Form, name='form')
+
+
+    path('form/', Form, name='form'),
+    path('search/', Search, name='search'),
+    path('find/', Find, name='find'),
 ]
 

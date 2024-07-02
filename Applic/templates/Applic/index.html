@@ -24,6 +24,7 @@
                         <li class="nav-item"><a class="nav-link" href="{% url 'acerca' %}">Acerca</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'contacto' %}">Contacto</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'form' %}">Formulario</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'search' %}">Buscar</a></li>
                     </ul>
                 </div>
             </div>
@@ -45,8 +46,26 @@
                         <h1>Inicio</h1>
                         {% endblock titulo %}
                         {% block contenido %}
-                        <p class="lead">A single, lightweight helper class allows you to add engaging, full width background images to sections of your page.</p>
-                        {% endblock contenido %}
+                            <table class='table-striped table'>
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                {% for c in client %}
+                                    <tbody>
+                                        <tr>
+                                            <td>{{ c.id}}</td>
+                                            <td>{{ c.money}}</td>
+                                            <td>{{ c.product}}</td>
+                                        </tr>
+                                    </tbody>
+                                {% endfor %}
+                            </table>
+
+                            
+                        {% endblock %}
                         
                         <p class="mb-0">The universe is almost 14 billion years old, and, wow! Life had no problem starting here on Earth! I think it would be inexcusably egocentric of us to suggest that we're alone in the universe.</p>
                     </div>

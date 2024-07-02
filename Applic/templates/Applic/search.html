@@ -1,0 +1,17 @@
+{% extends 'Applic/index.html' %}
+
+{% block titulo %}
+    <h1>Buscar un dato en especifico</h1>
+{% endblock titulo %}
+
+{% block contenido %}
+    <form method='GET' action="{% url 'find' %}">
+        {% csrf_token %}
+        <table class='table-striped table'>
+            <p>Buscar: <input type='text' name='Buscar algo...' id='buscar'></p>
+        </table>
+        <input type='submit' value='Enviar y regresar a inicio'>
+    </form>
+
+    
+{% endblock contenido %}

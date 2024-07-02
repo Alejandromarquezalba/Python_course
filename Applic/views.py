@@ -3,7 +3,8 @@ from .forms import *
 from .models import *
 
 def Home(request):
-    return render(request, 'Applic/index.html')
+    content = {'client': Client.objects.all()}
+    return render(request, 'Applic/index.html', content)
 
 def Acerca(request):
     return render(request, 'Applic/acerca.html')
@@ -25,4 +26,17 @@ def Form (request):
         form = classForm()
     
     return render(request, 'Applic/Form.html', {'form':form})
+
+
+def Search (request):
+    return render(request, 'Applic/search.html')
+
+def Find(request):
+    if request.GET.get('buscar'):
+        patron =  request.GET.get('buscar')
+        filt = Client.objects.filter(nombre__icointains=patron)
+        content = {'client': filt}
+    else:
+        content = {'client': Client.objects.all()}
+    return render(request, 'Applic/index.html', content)
 
