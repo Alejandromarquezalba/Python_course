@@ -3,8 +3,28 @@ from .forms import *
 from .models import *
 
 def Home(request):
-    content = {'client': Client.objects.all()}
-    return render(request, 'Applic/index.html', content)
+
+    content1 = {'client': Client.objects.all()}
+    content2 =  {'market': Market.objects.all()}
+    content3 = {'worker': Worker.objects.all()}
+    content = {
+                'content1':content1,
+                'content2':content2,
+                'content3':content3
+               }
+    print(content)
+    return render(
+        request, 
+        'Applic/index.html', content)
+
+
+#def Home2(request):
+#    content2 = {'market': Market.objects.all()}
+#    return render(request, 'Applic/index.html', content2)
+#def Home3(request):
+#    content3 = {'worker': Worker.objects.all()}
+#    return render(request, 'Applic/index.html', content3)
+
 
 def Acerca(request):
     return render(request, 'Applic/acerca.html')
@@ -24,6 +44,38 @@ def Form (request):
             return render(request, 'Applic/Form.html')
     else:
         form = classForm()
+    
+    return render(request, 'Applic/Form.html', {'form':form})
+
+
+def Form2 (request):
+    if request.method== 'POST':
+        form = classForm2(request.POST)
+        if form.is_valid():
+            data_money = form.cleaned_data.get('money'),
+            data_client = form.cleaned_data.get('client')
+            form_save = Client(money=data_money, client=data_client)
+            form_save.save()
+            
+            return render(request, 'Applic/Form.html')
+    else:
+        form = classForm2()
+    
+    return render(request, 'Applic/Form.html', {'form':form})
+
+
+def Form3 (request):
+    if request.method== 'POST':
+        form = classForm3(request.POST)
+        if form.is_valid():
+            data_pay = form.cleaned_data.get('pay'),
+            data_hours = form.cleaned_data.get('hours')
+            form_save = Client(pay=data_pay, hours=data_hours)
+            form_save.save()
+            
+            return render(request, 'Applic/Form.html')
+    else:
+        form = classForm3()
     
     return render(request, 'Applic/Form.html', {'form':form})
 
